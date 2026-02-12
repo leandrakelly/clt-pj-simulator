@@ -1,11 +1,11 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://business-days-calculator.vercel.app",
+      url: 'https://clt-pj-calculator.vercel.app', // TODO: adjust later
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 1,
     },
   ];
