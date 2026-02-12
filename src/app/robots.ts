@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://example.com/sitemap.xml', // TODO: change later
+    sitemap: 'https://clt-pj-simulator.vercel.app/sitemap.xml',
   };
 }

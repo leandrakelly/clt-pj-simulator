@@ -3,7 +3,7 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'Calculadora CLT vs PJ',
-    url: 'https://clt-pj-calculator.vercel.app', // TODO: adjust later
+    url: 'https://clt-pj-simulator.vercel.app/',
     description:
       'Ferramenta financeira para comparação de contratos de trabalho, cálculo de impostos (Simples Nacional, IRPF) e conversão de salário CLT para PJ.',
     applicationCategory: 'FinanceApplication',

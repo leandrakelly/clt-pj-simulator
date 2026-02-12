@@ -38,3 +38,31 @@ body {
   background-color: rgba(16, 185, 129, 0.3);
   color: #ffffff;
 }
+
+@media print {
+  button,
+  input,
+  header,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .bg-slate-900,
+  .bg-\[\#0B1121\] {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    color: black !important;
+  }
+
+  .text-white,
+  .text-slate-200,
+  .text-slate-400 {
+    color: black !important;
+  }
+}
