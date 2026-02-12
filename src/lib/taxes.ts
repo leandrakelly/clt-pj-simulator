@@ -45,9 +45,11 @@ const SIMPLES_ANEXO_V = [
 
 export interface CLTResult {
   grossSalary: number;
+  benefits: number;
   inss: number;
   irrf: number;
   netSalary: number;
+  netTotalMonthly: number;
   net13th: number;
   netVacation: number;
   totalYearlyNet: number;
@@ -89,13 +91,8 @@ function calculateINSS(gross: number): number {
  * Calculates IRRF comparing Legal Model vs. Simplified Model.
  * The government always applies whichever is more beneficial (lower tax) for the taxpayer.
  */
-function calculateIRRF(
-  gross: number,
-  inss: number,
-  dependents: number,
-): number {
-  const legalBase =
-    gross - inss - dependents * CONSTANTS.DEDUCTION_PER_DEPENDENT;
+function calculateIRRF(gross: number, inss: number): number {
+  const legalBase = gross - inss;
   let legalTax = 0;
 
   for (const range of IRRF_TABLE) {
@@ -146,28 +143,33 @@ function getSimplesEffectiveRate(
 
 export function calculateCLT(
   grossSalary: number,
-  dependents: number = 0,
+  benefits: number = 0,
 ): CLTResult {
   const inss = calculateINSS(grossSalary);
-  const irrf = calculateIRRF(grossSalary, inss, dependents);
+  const irrf = calculateIRRF(grossSalary, inss);
   const netSalary = grossSalary - inss - irrf;
 
+  const netTotalMonthly = netSalary + benefits;
+
   const inss13 = calculateINSS(grossSalary);
-  const irrf13 = calculateIRRF(grossSalary, inss13, dependents);
+  const irrf13 = calculateIRRF(grossSalary, inss13);
   const net13th = grossSalary - inss13 - irrf13;
 
   const vacationGross = grossSalary + grossSalary / 3;
   const inssVacation = calculateINSS(vacationGross);
-  const irrfVacation = calculateIRRF(vacationGross, inssVacation, dependents);
+  const irrfVacation = calculateIRRF(vacationGross, inssVacation);
   const netVacation = vacationGross - inssVacation - irrfVacation;
 
-  const totalYearlyNet = netSalary * 11 + netVacation + net13th;
+  const totalYearlyNet =
+    netSalary * 12 + benefits * 12 + net13th + (netVacation - netSalary);
 
   return {
     grossSalary,
+    benefits,
     inss,
     irrf,
     netSalary,
+    netTotalMonthly,
     net13th,
     netVacation,
     totalYearlyNet,
@@ -202,7 +204,7 @@ export function calculatePJ(
     CONSTANTS.MAX_INSS * 0.11,
   );
 
-  const irrfProLabore = calculateIRRF(actualProLabore, inssPartner, 0);
+  const irrfProLabore = calculateIRRF(actualProLabore, inssPartner);
   const netProLabore = actualProLabore - inssPartner - irrfProLabore;
 
   const companyProfit =

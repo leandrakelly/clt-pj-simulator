@@ -28,13 +28,18 @@ describe('CLT Salary Calculator', () => {
     expect(resultHigh.inss).toBeCloseTo(resultCeiling.inss);
   });
 
-  it('should reduce IRRF when dependents are included', () => {
-    const resultNoDependents = calculateCLT(7000, 0);
-    const resultWithDependents = calculateCLT(7000, 2);
+  it('should correctly add benefits to the monthly total without affecting taxes', () => {
+    const salary = 7000;
+    const benefits = 1000;
 
-    expect(resultWithDependents.irrf).toBeLessThan(resultNoDependents.irrf);
-    expect(resultWithDependents.netSalary).toBeGreaterThan(
-      resultNoDependents.netSalary,
+    const resultNoBenefits = calculateCLT(salary, 0);
+    const resultWithBenefits = calculateCLT(salary, benefits);
+
+    expect(resultWithBenefits.irrf).toBe(resultNoBenefits.irrf);
+    expect(resultWithBenefits.inss).toBe(resultNoBenefits.inss);
+    expect(resultWithBenefits.netSalary).toBe(resultNoBenefits.netSalary);
+    expect(resultWithBenefits.netTotalMonthly).toBe(
+      resultNoBenefits.netTotalMonthly + benefits,
     );
   });
 });
