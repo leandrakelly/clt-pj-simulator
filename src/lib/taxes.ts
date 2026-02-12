@@ -57,13 +57,14 @@ export interface CLTResult {
 
 export interface PJResult {
   grossInvoice: number;
-  taxModel: 'Simples Nacional (Anexo III)' | 'Simples Nacional (Anexo V)';
+  taxModel: string;
   effectiveTaxRate: number;
   taxes: number;
   proLabore: number;
   inssProLabore: number;
   irrfProLabore: number;
   accountantCost: number;
+  healthCost: number;
   netIncome: number;
   totalYearlyNet: number;
 }
@@ -178,6 +179,7 @@ export function calculateCLT(
 
 export function calculatePJ(
   grossInvoice: number,
+  healthCost: number = 0,
   accountantCost: number = 300,
 ): PJResult {
   const annualRevenue = grossInvoice * 12;
@@ -188,11 +190,9 @@ export function calculatePJ(
   const idealProLabore = grossInvoice * 0.28;
   const actualProLabore = Math.max(idealProLabore, CONSTANTS.MINIMUM_WAGE);
 
-  let chosenAnnex: 'III' | 'V';
+  let chosenAnnex: 'III' | 'V' = 'III';
 
-  if (actualProLabore / grossInvoice >= 0.28) {
-    chosenAnnex = 'III';
-  } else {
+  if (actualProLabore / grossInvoice < 0.28) {
     chosenAnnex = 'III';
   }
 
@@ -203,12 +203,12 @@ export function calculatePJ(
     actualProLabore * 0.11,
     CONSTANTS.MAX_INSS * 0.11,
   );
-
   const irrfProLabore = calculateIRRF(actualProLabore, inssPartner);
+
   const netProLabore = actualProLabore - inssPartner - irrfProLabore;
 
   const companyProfit =
-    grossInvoice - dasTax - accountantCost - actualProLabore;
+    grossInvoice - dasTax - accountantCost - actualProLabore - healthCost;
 
   const netIncome = netProLabore + companyProfit;
 
@@ -221,6 +221,7 @@ export function calculatePJ(
     inssProLabore: inssPartner,
     irrfProLabore,
     accountantCost,
+    healthCost,
     netIncome,
     totalYearlyNet: netIncome * 12,
   };
