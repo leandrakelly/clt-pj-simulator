@@ -224,7 +224,6 @@ export default function CalculatorComparison() {
 
   return (
     <div className="mx-auto w-full max-w-7xl p-4 text-slate-200 md:p-8">
-      {/* HEADER */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -237,14 +236,14 @@ export default function CalculatorComparison() {
         <div className="inline-flex rounded-xl border border-slate-800 bg-slate-900 p-1">
           <button
             onClick={() => setViewMode('monthly')}
-            className={`rounded-lg px-8 py-2 font-mono text-sm font-bold transition-all ${viewMode === 'monthly' ? 'bg-slate-800 text-white' : 'text-slate-500 hover:text-slate-300'}`}
+            className={`rounded-lg px-8 py-2 font-mono text-sm font-bold transition-all ${viewMode === 'monthly' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-slate-300'}`}
             aria-label="Visualizar cálculos mensais"
           >
             MENSAL
           </button>
           <button
             onClick={() => setViewMode('yearly')}
-            className={`rounded-lg px-8 py-2 font-mono text-sm font-bold transition-all ${viewMode === 'yearly' ? 'bg-slate-800 text-white' : 'text-slate-500 hover:text-slate-300'}`}
+            className={`rounded-lg px-8 py-2 font-mono text-sm font-bold transition-all ${viewMode === 'yearly' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-slate-300'}`}
             aria-label="Visualizar cálculos anuais"
           >
             ANUAL
@@ -261,7 +260,9 @@ export default function CalculatorComparison() {
         <div className="flex items-center gap-4">
           <Target className="h-6 w-6 text-purple-400" />
           <div>
-            <h4 className="font-bold text-purple-100">Ponto de Equilíbrio</h4>
+            <h2 className="text-lg font-bold text-purple-100">
+              Ponto de Equilíbrio
+            </h2>
             <p className="text-sm text-slate-400">
               Quanto você precisa faturar para igualar seu CLT atual:
             </p>
@@ -269,7 +270,7 @@ export default function CalculatorComparison() {
         </div>
         <div className="rounded-2xl border border-white/5 bg-slate-950 px-6 py-3 font-mono text-3xl font-bold text-white">
           {formatCurrency(breakEven)}{' '}
-          <span className="font-sans text-xs text-slate-500">/mês</span>
+          <span className="font-sans text-xs text-slate-400">/mês</span>
         </div>
       </motion.div>
 
@@ -315,12 +316,12 @@ export default function CalculatorComparison() {
               <div className="space-y-1">
                 <label
                   htmlFor="clt-salary"
-                  className="font-mono text-[10px] text-slate-500"
+                  className="font-mono text-[10px] text-slate-400"
                 >
                   SALÁRIO BRUTO
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-3.5 font-mono text-sm text-slate-500">
+                  <span className="absolute left-3 top-3.5 font-mono text-sm text-slate-400">
                     R$
                   </span>
                   <input
@@ -337,12 +338,12 @@ export default function CalculatorComparison() {
               <div className="space-y-1">
                 <label
                   htmlFor="clt-benefits"
-                  className="font-mono text-[10px] text-slate-500"
+                  className="font-mono text-[10px] text-slate-400"
                 >
                   BENEFÍCIOS (VA/VR)
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-3.5 font-mono text-sm text-slate-500">
+                  <span className="absolute left-3 top-3.5 font-mono text-sm text-slate-400">
                     R$
                   </span>
                   <input
@@ -372,12 +373,12 @@ export default function CalculatorComparison() {
               <div className="space-y-1">
                 <label
                   htmlFor="pj-revenue"
-                  className="font-mono text-[10px] text-slate-500"
+                  className="font-mono text-[10px] text-slate-400"
                 >
                   FATURAMENTO MENSAL
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-3.5 font-mono text-sm text-slate-500">
+                  <span className="absolute left-3 top-3.5 font-mono text-sm text-slate-400">
                     R$
                   </span>
                   <input
@@ -394,13 +395,13 @@ export default function CalculatorComparison() {
               <div className="space-y-1">
                 <label
                   htmlFor="pj-health"
-                  className="font-mono text-[10px] text-slate-500"
+                  className="font-mono text-[10px] text-slate-400"
                 >
                   PLANO DE SAÚDE PJ
                 </label>
                 <div className="relative">
                   <HeartPulse className="absolute left-3 top-4 h-4 w-4 text-red-500/40" />
-                  <span className="absolute left-9 top-3.5 font-mono text-sm text-slate-500">
+                  <span className="absolute left-9 top-3.5 font-mono text-sm text-slate-400">
                     R$
                   </span>
                   <input
@@ -485,7 +486,7 @@ export default function CalculatorComparison() {
               transition={{ delay: 0.3 }}
               className="rounded-3xl border border-slate-800 bg-[#0B1121] p-6 shadow-2xl"
             >
-              <h3 className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-500">
+              <h3 className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400">
                 <TrendingUp size={14} /> Comparação de Renda
               </h3>
               <div className="h-48">
@@ -532,7 +533,7 @@ export default function CalculatorComparison() {
               transition={{ delay: 0.4 }}
               className="rounded-3xl border border-slate-800 bg-[#0B1121] p-6 shadow-2xl"
             >
-              <h3 className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-500">
+              <h3 className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400">
                 <PieIcon size={14} /> Distribuição CLT (Mês)
               </h3>
               <div className="h-48">
@@ -580,7 +581,7 @@ export default function CalculatorComparison() {
             <div className="overflow-x-auto p-4 md:p-8">
               <table className="w-full min-w-[500px] text-left font-mono text-sm">
                 <thead>
-                  <tr className="border-b border-slate-800 text-slate-500">
+                  <tr className="border-b border-slate-800 text-slate-400">
                     <th className="pb-4 pr-4 font-sans text-xs uppercase tracking-widest">
                       Detalhamento (
                       {viewMode === 'monthly' ? 'Mensal' : 'Anual'})
@@ -622,7 +623,7 @@ export default function CalculatorComparison() {
                           : values.cltBenefits * 12,
                       )}
                     </td>
-                    <td className="whitespace-nowrap pl-2 text-right text-xs opacity-20 md:text-sm">
+                    <td className="whitespace-nowrap pl-2 text-right text-xs text-slate-600 md:text-sm">
                       R$ 0,00
                     </td>
                   </tr>
@@ -637,7 +638,7 @@ export default function CalculatorComparison() {
                             results.clt.netTotalMonthly * 12,
                         )}
                       </td>
-                      <td className="whitespace-nowrap pl-2 text-right text-xs opacity-20 md:text-sm">
+                      <td className="whitespace-nowrap pl-2 text-right text-xs text-slate-600 md:text-sm">
                         R$ 0,00
                       </td>
                     </tr>
@@ -673,7 +674,7 @@ export default function CalculatorComparison() {
                     <td className="py-4 pr-4 font-sans text-xs">
                       Custo Saúde / Operacional
                     </td>
-                    <td className="whitespace-nowrap px-2 text-right text-xs opacity-20 md:text-sm">
+                    <td className="whitespace-nowrap px-2 text-right text-xs text-slate-600 md:text-sm">
                       R$ 0,00
                     </td>
                     <td className="whitespace-nowrap pl-2 text-right text-xs md:text-sm">

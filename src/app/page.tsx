@@ -23,10 +23,10 @@ export default function Home() {
       </div>
 
       <footer className="relative z-10 mt-12 border-t border-slate-900 py-8 text-center">
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-slate-500">
           Baseado nas tabelas oficiais de 2025 (INSS, IRRF e Simples Nacional).
           <br />
-          <span className="opacity-50">
+          <span className="text-slate-600">
             Não substitui consultoria contábil oficial.
           </span>
         </p>
