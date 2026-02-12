@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion';
 import {
+  ArrowRight,
   Briefcase,
   Building2,
   Check,
   HeartPulse,
   PieChart as PieIcon,
+  Printer,
   Share2,
   Target,
   TrendingUp,
@@ -415,6 +417,36 @@ export default function CalculatorComparison() {
             </div>
           </motion.section>
 
+          <motion.a
+            href="https://indiquei.app/KAxazu"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="group relative flex w-full items-center justify-between overflow-hidden rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 transition-all hover:border-emerald-500/50 hover:bg-emerald-500/20"
+          >
+            <div className="z-10 flex items-center gap-3">
+              <div className="rounded-lg bg-emerald-500/20 p-2 text-emerald-400">
+                <Building2 size={20} />
+              </div>
+              <div className="text-left">
+                <p className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+                  Abrir CNPJ Grátis
+                </p>
+                <p className="text-sm text-slate-300">
+                  Ganhe desconto na contabilidade
+                </p>
+              </div>
+            </div>
+
+            <div className="z-10 rounded-full bg-emerald-500 p-2 text-slate-950 transition-transform group-hover:-rotate-45">
+              <ArrowRight size={16} className="rotate-45" />{' '}
+            </div>
+
+            <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-emerald-500/20 blur-2xl transition-all group-hover:bg-emerald-500/30" />
+          </motion.a>
+
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -435,6 +467,14 @@ export default function CalculatorComparison() {
               </>
             )}
           </motion.button>
+
+          <button
+            onClick={() => window.print()}
+            className="flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-700 bg-transparent py-4 font-bold text-slate-400 transition-all hover:bg-slate-800 hover:text-white"
+          >
+            <Printer size={18} />
+            SALVAR PDF
+          </button>
         </div>
 
         <div className="space-y-6 lg:col-span-8">

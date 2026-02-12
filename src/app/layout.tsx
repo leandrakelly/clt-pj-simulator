@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: 'CLT ou PJ? Veja qual paga mais (Cálculo Exato 2026)',
     description:
       'Recebeu uma proposta PJ e não sabe se compensa? Nossa calculadora detalha todos os impostos e te mostra o dinheiro real no bolso.',
-    url: 'https://clt-pj-calculator.vercel.app', // TODO: adjust later
+    url: 'https://clt-pj-simulator.vercel.app/',
     siteName: 'Calculadora CLT vs PJ',
     locale: 'pt_BR',
     type: 'website',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://clt-pj-calculator.vercel.app', // TODO: adjust later
+    canonical: 'https://clt-pj-simulator.vercel.app/',
   },
 };
 
