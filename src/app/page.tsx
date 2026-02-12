@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import CalculatorComparison from '@/components/Calculator';
 
 export default function Home() {
@@ -9,7 +11,15 @@ export default function Home() {
       </div>
 
       <div className="relative z-10 py-12 md:py-20">
-        <CalculatorComparison />
+        <Suspense
+          fallback={
+            <div className="flex min-h-[500px] animate-pulse items-center justify-center font-mono text-slate-500">
+              Carregando sistema...
+            </div>
+          }
+        >
+          <CalculatorComparison />
+        </Suspense>
       </div>
 
       <footer className="relative z-10 mt-12 border-t border-slate-900 py-8 text-center">
